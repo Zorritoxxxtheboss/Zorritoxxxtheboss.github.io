@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone Style Page</title>
+    <title>Zorr Crypto Clicker</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -16,67 +16,71 @@
             height: 100vh;
         }
         .container {
-            width: 375px; /* iPhone screen width */
-            height: 667px; /* iPhone screen height */
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            position: relative;
-        }
-        .header {
-            height: 50px;
-            background: #007aff;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-        .header h1 {
-            font-size: 16px;
-            margin: 0;
-        }
-        .content {
-            padding: 20px;
             text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         }
-        .content h2 {
+        h1 {
+            color: #007acc;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .crypto-count {
+            font-size: 2em;
+            margin: 20px 0;
             color: #333;
-            font-size: 24px;
-            margin-bottom: 10px;
         }
-        .content p {
-            color: #666;
-            font-size: 16px;
+        .click-button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: white;
+            background-color: #007acc;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 50px;
-            background: #f8f8f8;
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #007aff;
+        .click-button:hover {
+            background-color: #005fa3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>My iPhone Page</h1>
-        </div>
-        <div class="content">
-            <h2>Welcome!</h2>
-            <p>This page mimics the style of an iPhone interface.</p>
-        </div>
-        <div class="footer">
-            Footer Content
-        </div>
+        <h1>Zorr Crypto Clicker</h1>
+        <p>Tap the button to earn Zorr cryptos!</p>
+        <div class="crypto-count" id="cryptoCount">0 Zorrs</div>
+        <button class="click-button" onclick="earnCrypto()">Tap Me!</button>
     </div>
+
+    <script>
+        let cryptoCount = 0;
+        let cryptoPerClick = 1;
+
+        function earnCrypto() {
+            cryptoCount += cryptoPerClick;
+            document.getElementById("cryptoCount").innerText = cryptoCount + " Zorrs";
+
+            // Duplica el valor por toque después de 100 toques
+            if (cryptoCount >= 100) {
+                cryptoPerClick = 2;
+            }
+
+            // Duplica nuevamente después de 200 toques y así sucesivamente
+            if (cryptoCount >= 200) {
+                cryptoPerClick = 4;
+            }
+
+            if (cryptoCount >= 400) {
+                cryptoPerClick = 8;
+            }
+            // Puedes agregar más niveles de incremento aquí
+        }
+    </script>
 </body>
 </html>
+
 
