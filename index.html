@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Zorr Crypto Clicker</title>
     <style>
         body {
@@ -14,6 +14,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            -webkit-tap-highlight-color: transparent; /* Evita el flash azul en iOS */
+            touch-action: manipulation; /* Deshabilita el zoom de pellizco */
         }
         .container {
             text-align: center;
@@ -32,6 +34,14 @@
             font-size: 2em;
             margin: 20px 0;
             color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .crypto-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
         }
         .click-button {
             padding: 15px 30px;
@@ -52,7 +62,10 @@
     <div class="container">
         <h1>Zorr Crypto Clicker</h1>
         <p>Tap the button to earn Zorr cryptos!</p>
-        <div class="crypto-count" id="cryptoCount">0 Zorrs</div>
+        <div class="crypto-count" id="cryptoCount">
+            <img src="https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-coin-cryptocurrency-wanicon-flat-wanicon.png" alt="Zorr Icon" class="crypto-icon">
+            <span id="zorrAmount">0</span> Zorrs
+        </div>
         <button class="click-button" onclick="earnCrypto()">Tap Me!</button>
     </div>
 
@@ -62,7 +75,7 @@
 
         function earnCrypto() {
             cryptoCount += cryptoPerClick;
-            document.getElementById("cryptoCount").innerText = cryptoCount + " Zorrs";
+            document.getElementById("zorrAmount").innerText = cryptoCount;
 
             // Duplica el valor por toque después de 100 toques
             if (cryptoCount >= 100) {
